@@ -89,7 +89,11 @@ for i in friends:
 • Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
 • Print a second set of invitation messages, one for each person who is still in your list.'''
 
-
+print("\nES.3.5\nAlbert Einstein can't come to dinner.")
+dinner.remove("Albert Einstein")
+dinner.append("Leclerc")
+for i in friends:
+    print("Dear ",dinner,"\nyou are invited to dinner.")
 
 
 '''3-6. More Guests: You just found a bigger dinner table, so now more space is available. 
@@ -101,7 +105,12 @@ Think of three more guests to invite to dinner.
 • Use append() to add one new guest to the end of your list.
 • Print a new set of invitation messages, one for each person in your list.'''
 
-
+print("\nES.3.6\nYOOOO bigger table found")
+dinner.insert(0,"Pippo")
+dinner.insert(len(dinner)//2,"Lillo")
+dinner.append("Gino")
+for i in friends:
+    print("Dear ",dinner,"\nyou are invited to dinner.")
 
 
 '''3-7. Shrinking Guest List: You just found out that your new dinner table won’t arrive in time for the dinner,
@@ -115,7 +124,12 @@ Think of three more guests to invite to dinner.
 • Use del to remove the last two names from your list, so you have an empty list. 
     Print your list to make sure you actually have an empty list at the end of your program.'''
 
-
+print("\nES.3.7\nOnly 2 people for dinner now.")
+while len(dinner>2):
+    print("I'm sorry",dinner.pop(),"I have no space and you can't come.")
+print("You are still invited",dinner[0])
+print("You are still invited",dinner[1])
+del
 
 
 '''3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
