@@ -78,8 +78,8 @@ Then use your list to print a message to each person, inviting them to dinner.''
 
 print("\nES.3.4\n")
 dinner=["Albert Einstein","Marilyn Monroe","Hitodeka Miyazaky"]
-for i in friends:
-    print("Dear ",dinner,"\nyou are invited to dinner.")
+for i in dinner:
+    print("Dear ",i,"\nyou are invited to dinner.")
 
 
 '''3-5. Changing Guest List: You just heard that one of your guests can’t make the dinner, 
@@ -92,8 +92,8 @@ for i in friends:
 print("\nES.3.5\nAlbert Einstein can't come to dinner.")
 dinner.remove("Albert Einstein")
 dinner.append("Leclerc")
-for i in friends:
-    print("Dear ",dinner,"\nyou are invited to dinner.")
+for i in dinner:
+    print("Dear ",i,"\nyou are invited to dinner.")
 
 
 '''3-6. More Guests: You just found a bigger dinner table, so now more space is available. 
@@ -110,7 +110,7 @@ dinner.insert(0,"Pippo")
 dinner.insert(len(dinner)//2,"Lillo")
 dinner.append("Gino")
 for i in friends:
-    print("Dear ",dinner,"\nyou are invited to dinner.")
+    print("Dear ",i,"\nyou are invited to dinner.")
 
 
 '''3-7. Shrinking Guest List: You just found out that your new dinner table won’t arrive in time for the dinner,
@@ -125,7 +125,7 @@ for i in friends:
     Print your list to make sure you actually have an empty list at the end of your program.'''
 
 print("\nES.3.7\nOnly 2 people for dinner now.")
-while len(dinner>2):
+while len(dinner)>2:
     print("I'm sorry",dinner.pop(),"I have no space and you can't come.")
 print("You are still invited",dinner[0])
 print("You are still invited",dinner[1])
