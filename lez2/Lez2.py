@@ -129,7 +129,8 @@ while len(dinner>2):
     print("I'm sorry",dinner.pop(),"I have no space and you can't come.")
 print("You are still invited",dinner[0])
 print("You are still invited",dinner[1])
-del
+del(dinner)
+print(dinner)
 
 
 '''3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
