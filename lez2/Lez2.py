@@ -1,6 +1,5 @@
 # Luca Cavalleri
 # 18/04/2024
-print("Hello world")
 
 #2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person. 
 #Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”
@@ -175,7 +174,7 @@ print("Sto invitando ",len(dinner)," persone.")
 For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like. 
 Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.'''
 
-
+# len print sorted reverse pop insert append remove upper lower
 
 
 '''6-1. Person: Use a dictionary to store information about a person you know. 
@@ -193,7 +192,10 @@ Think of five names, and use them as keys in your dictionary.
 Think of a favorite number for each person, and store each as a value in your dictionary. 
 Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.'''
 
-
+print("\nES.6.2")
+fave_nums={"Pino":3,"Franco":10,"Tiziano":13,"Luca":23}
+for i,j in fave_nums.items():
+    print("Il numero preferito di ",i," è ",j)
 
 
 '''6-3. Glossary: A Python dictionary can be used to model an actual dictionary. 
@@ -205,21 +207,36 @@ However, to avoid confusion, let’s call it a glossary.
     or print the word on one line and then print its meaning indented on a second line. 
     Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.'''
 
-
+print("\nES.6.3")
+Glossary={"iteratori":"Strumenti logici in programmazione che iteran (ciclano) il codice al loro interno per x volte decise da un range o una condizione.",
+          "variabile":"Un contenitore, utilizzato nella rogrammazione in modo da salvare dati e potervi accedere in seguito, ce ne sono vari tipi in base a cosa si vuole salvare.",
+          "liste":"un tipo di variabile all'interno della quale possono veir salvate piu varibili, e venr chiamate singolarmente in base al loro indice nella lista."}
+for i,j in fave_nums.items():
+    print(i,":\n\t",j)
 
 
 '''6-7. People: Start with the program you wrote for Exercise 6-1. 
 Make two new dictionaries representing different people, and store all three dictionaries in a list called people. 
 Loop through your list of people. As you loop through the list, print everything you know about each person.'''
 
-
-
+print("\nES.6.7")
+Pino={"first_name":"Pino","last_name":"Rossi","age":45,"city":"Roma"}
+Gino={"first_name":"Gino","last_name":"Verdi","age":65,"city":"Milano"}
+people=[me,Pino,Gino]
+for i in people:
+    print("Nome: ",i["first_name"],"\nCognome",i["last_name"],"\nEtà",i["age"],"\nCittà:",i["city"],"\n")
 
 '''6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. 
 In each dictionary, include the kind of animal and the owner’s name. Store these dictionaries in a list called pets. 
 Next, loop through your list and as you do, print everything you know about each pet. '''
 
-
+print("\nES.6.8")
+pet1={"animal_name":"Leone","animal_type":"Dog","owner":"Claudia"}
+pet2={"animal_name":"Kuro","animal_type":"Cat","owner":"Leonardo"}
+pet3={"animal_name":"Pyx","animal_type":"Parrot","owner":"Harold"}
+pets=[pet1,pet2,pet3]
+for i in pets:
+    print("Nome: ",i["animal_name"],"\nAnimale:",i["animal_type"],"\nNome padrone:",i["owner"],"\n")
 
 
 '''6-9. Favorite Places: Make a dictionary called favorite_places. 
@@ -227,13 +244,24 @@ Think of three names to use as keys in the dictionary, and store one to three fa
 To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
 Loop through the dictionary, and print each person’s name and their favorite places.'''
 
-
+print("\nES.6.9")
+favorite_places={"Mario":["stadio","faro","piscina"],"Luigi":["cascatelle","parco","pyrgo"],"Tino":["acquedotto","bar","università"]}
+for i,j in favorite_places.items():
+    print("\nI posti preferiti di",i,"sono:")
+    print(*j,sep=", ")
 
 
 '''6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
 Then print each person’s name along with their favorite numbers.'''
 
-
+print("\nES.6.10")
+fave_nums["Franco"]=[3,44,99]
+fave_nums["Luca"]=[23,7,13]
+fave_nums["Pino"]=[10,77,17]
+fave_nums["Tiziano"]=[13,5,90]
+for i,j in fave_nums.items():
+    print("\nI numeri preferiti di",i,"sono:")
+    print(*j,sep=", ")
 
 
 '''6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. 
@@ -242,7 +270,12 @@ and one fact about that city. The keys for each city’s dictionary should be so
 Print the name of each city and all of the information you have stored about it.'''
 
 
-
+cities={"Roma":{"country":"Italy","population":"4,332,000","fun_fact":"There are more than 2000 fountains in Rome."},
+        "New York":{"country":"USA","population":"7,931,147","fun_fact":"Times square has 238 billboards."},
+        "Tokyo":{"country":"Japan","population":"37,115,035","fun_fact":"There are anti-suicide lights in Tokyo’s metro stations."}}
+for i,j in cities.items():
+    print("\nLe informazoni su",i,"sono:")
+    print(*j.values(),sep=", ")
 
 '''6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. 
 Use one of the example programs from this chapter, and extend it by adding new keys and values, 
