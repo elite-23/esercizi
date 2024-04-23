@@ -129,7 +129,8 @@ while len(dinner)>2:
     print("I'm sorry",dinner.pop(),"I have no space and you can't come.")
 print("You are still invited",dinner[0])
 print("You are still invited",dinner[1])
-del(dinner)
+del(dinner[0])
+del(dinner[0])
 print(dinner)
 
 
@@ -146,14 +147,28 @@ print(dinner)
 • Use sort() to change your list so it’s stored in reverse-alphabetical order.
 Print the list to show that its order has changed.'''
 
+print("\nES.3.8")
+locations=["Roma","Parigi","New York","Tokyo","London"]
+print(locations)
+print(sorted(locations))
+print(locations)
+locations.reverse()
+print(locations)
+locations.reverse()
+print(locations)
+locations=sorted(locations)
+print(locations)
+locations=sorted(locations, reverse=True)
+print(locations)
 
 
 
 '''3-9. Dinner Guests: Working with one of the programs from Exercises 3, 
 use len() to print a message indicating the number of people you’re inviting to dinner.'''
 
-
-
+print("\nEs.3.9")
+dinner=["Albert Einstein","Marilyn Monroe","Hitodeka Miyazaky"]
+print("Sto invitando ",len(dinner)," persone.")
 
 
 '''3-10. Every Function: Think of things you could store in a list. 
@@ -167,7 +182,10 @@ Write a program that creates a list containing these items and then uses each fu
 Store their first name, last name, age, and the city in which they live. 
 You should have keys such as first_name, last_name, age, and city. Print each piece of information stored in your dictionary.'''
 
-
+print("\nES.6.1")
+me={"first_name":"Luca","last_name":"Cavalleri","age":21,"city":"Santa Marinella"}
+for i in me.values():
+    print(i)
 
 
 '''6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. 
