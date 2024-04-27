@@ -1,13 +1,28 @@
+#Luca Cavalleri
 '''
 8-1. Message: Write a function called display_message() that prints one sentence telling everyone 
 what you are learning about in this chapter. Call the function, and make sure the message displays correctly.
 '''
+
+def display_message():
+    print("In this chapter, I'm learning about funcions.")
+
+print("\nES.8.1")
+display_message()
+
 
 '''
 8-2. Favorite Book: Write a function called favorite_book() that accepts one parameter, title. 
 The function should print a message, such as "One of my favorite books is Alice in Wonderland". 
 Call the function, making sure to include a book title as an argument in the function call.
 '''
+
+def favorite_book(title:str):
+    print("One of my favorite books is",title)
+
+print("\nES.8.2")
+favorite_book("Cthulhu, I racconti del mito")
+
 
 '''
 8-3. T-Shirt: Write a function called make_shirt() that accepts a size and the text of a message 
@@ -16,10 +31,26 @@ the shirt and the message printed on it. Call the function once using positional
 Call the function a second time using keyword arguments.
 '''
 
+def make_shirt(size,text):
+    print("We'll make a shirt size:",size,"with the text '",text,"' printed on it.")
+
+print("\nES.8.3")
+make_shirt("L","Positional arguments call.")
+make_shirt(text="Keyword arguments call.",size="M")
+
 '''
 8-4. Large Shirts: Modify the make_shirt() function so that shirts are large by default with a message that reads I love Python. 
 Make a large shirt and a medium shirt with the default message, and a shirt of any size with a different message.
 '''
+
+def make_shirt(text,size="L"):
+    print("We'll make a shirt size:",size,"with the text '",text,"' printed on it.")
+
+print("\nES.8.4")
+make_shirt("I love Python")
+make_shirt("I love Python","M")
+make_shirt("Keep calm and code","S")
+
 
 '''
 8-5. Cities: Write a function called describe_city() that accepts the name of a city and its country. 
@@ -27,11 +58,29 @@ The function should print a simple sentence, such as Reykjavik is in Iceland. Gi
 Call your function for three different cities, at least one of which is not in the default country.
 '''
 
+def describe_city(city,country="Italy"):
+    print(city,"is in",country)
+
+print("\nES.8.5")
+describe_city("Rome")
+describe_city("Milan")
+describe_city("New York","USA")
+
+
 '''
 8-6. City Names: Write a function called city_country() that takes in the name of a city and its country. 
 The function should return a string formatted like this: "Santiago, Chile". 
 Call your function with at least three city-country pairs, and print the values that are returned.
 '''
+
+def city_country(city,country):
+    return(city,",",country)
+
+print("\nES.8.6")
+print(city_country("Tokyo","Japan"))
+print(city_country("Milan","Italy"))
+print(city_country("Los Angeles","USA"))
+
 
 '''
 8-7. Album: Write a function called make_album() that builds a dictionary describing a music album. 
@@ -43,16 +92,50 @@ If the calling line includes a value for the number of songs, add that value to 
 Make at least one new function call that includes the number of songs on an album.
 '''
 
+def make_album(artist,album,songs=None):
+    if songs==None:
+        dictionary={"Artist":artist,"album":album}
+    else:
+        dictionary={"Artist":artist,"album":album,"songs":songs}
+    return dictionary
+
+print("\nES.8.7")
+print(make_album("Eve","Smile"))
+print(make_album("Wilbur Soot","Your city gave me asthma"))
+print(make_album("The Living Tombstone","My ordinary life",1))
+
+
 '''
 8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist 
 and title. Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. 
 Be sure to include a quit value in the while loop.
 '''
 
+print("\nES.8.8")
+loop=True
+while loop:
+    ans=input("Do you wanna make an album? Y/N")
+    if ans.upper()=="Y":
+        print("Here is the album you created:",make_album(input("Enter the name of the artist"),input("Enter the name of the album")))
+    elif ans.upper()=="N":
+        loop=False
+    else:
+        print("Please enter Y or N as an answer")
+
+
 '''
 8-9. Messages: Make a list containing a series of short text messages. 
 Pass the list to a function called show_messages(), which prints each text message.
 '''
+
+print("\nES.8.9")
+texts=["Hello, how are you?","I'm so happy.","I hate this.","Do you know what i'm thinking about?"]
+def show_messages(messages: list):
+    for i in messages:
+        print(i)
+
+show_messages(texts)
+
 
 '''
 8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. 

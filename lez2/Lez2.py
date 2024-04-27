@@ -174,7 +174,23 @@ print("Sto invitando ",len(dinner)," persone.")
 For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like. 
 Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.'''
 
-# len print sorted reverse pop insert append remove upper lower
+print("\nES.3.10")
+games=["Outer Wilds","Undertale","Metal Gear Saga","God of War"]
+games.append("Elden Ring")
+games=sorted(games)
+games.reverse
+print(games)
+for i in range(len(games)):
+    print(games[i])
+    games[i]=games[i].upper()
+    if i%2==0:
+        games.pop(i)
+        games.insert(i,"League of Legends")
+    else:
+        games[i]=games[i].lower()
+games.remove("outer wilds")
+print(games)
+
 
 
 '''6-1. Person: Use a dictionary to store information about a person you know. 
@@ -274,10 +290,16 @@ cities={"Roma":{"country":"Italy","population":"4,332,000","fun_fact":"There are
         "New York":{"country":"USA","population":"7,931,147","fun_fact":"Times square has 238 billboards."},
         "Tokyo":{"country":"Japan","population":"37,115,035","fun_fact":"There are anti-suicide lights in Tokyo’s metro stations."}}
 for i,j in cities.items():
-    print("\nLe informazoni su",i,"sono:")
-    print(*j.values(),sep=", ")
+    print("\nThe informations about",i,"are:")
+    print("\ncountry:",j["country"],"\npopulation number:",j["population"],"\nfun fact:",j["fun_fact"],)
 
 '''6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. 
 Use one of the example programs from this chapter, and extend it by adding new keys and values, 
 changing the context of the program, or improving the formatting of the output.'''
 
+cities["Roma"]["surface_area"]="1.285 km^2"
+cities["New York"]["surface_area"]="783,8 km^2"
+cities["Tokyo"]["surface_area"]="2.194 km^2"
+for i,j in cities.items():
+    print("\nThe informations about",i,"are:")
+    print("\ncountry:",j["country"],"\npopulation number:",j["population"],"\nfun fact:",j["fun_fact"],"\nsurface area:",j["surface_area"])
