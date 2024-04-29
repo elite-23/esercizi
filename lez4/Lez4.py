@@ -144,11 +144,32 @@ to a new list called sent_messages as it’s printed.
 After calling the function, print both of your lists to make sure the messages were moved correctly.
 '''
 
+print("\nES.8.10")
+texts=["Hello, how are you?","I'm so happy.","I hate this.","Do you know what i'm thinking about?"]
+def send_messages(messages: list):
+    sent_messages=[]
+    for i in messages:
+        print(i)
+        sent_messages.append(i)
+    
+    return sent_messages
+
+sent=send_messages(texts)
+print(texts,sent)
+
+
 '''
 8-11. Archived Messages: Start with your work from Exercise 8-10. 
 Call the function send_messages() with a copy of the list of messages. 
 After calling the function, print both of your lists to show that the original list has retained its messages.
 '''
+
+print("\nES.8.11")
+copy=texts.copy
+send_messages(copy)
+print(texts)
+print(copy)
+
 
 '''
 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
@@ -157,12 +178,30 @@ and it should print a summary of the sandwich that’s being ordered.
 Call the function three times, using a different number of arguments each time.
 '''
 
+print("\nES.8.12")
+def make_sandwich(*ingredients):
+    print("The sandwitch will have:")
+    for i in ingredients:
+        print(i)
+
+make_sandwich("bread","ham")
+make_sandwich("bread","ham","cheese","mayonase")
+make_sandwich("bread","ham","mayonase")
+
+
 '''
 8-13. User Profile:  Build a profile of yourself by calling build_profile(), 
 using your first and last names and three other key-value pairs that describe you. 
 All the values must be passed to the function as parameters. 
 The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
 '''
+
+print("\nES.8.13")
+def build_profile(firstN,lastN,age,height,weight):
+    print(firstN,lastN,", age",age,", height",height,", weight",weight)
+
+build_profile("Luca","Cavalleri","21","1,78","84")
+
 
 '''
 8-14. Cars: Write a function that stores information about a car in a dictionary. 
@@ -173,10 +212,17 @@ Your function should work for a call like this one: car = make_car('subaru', 'ou
 Print the dictionary that’s returned to make sure all the information was stored correctly. 
 '''
 
+print("\nES.8.14")
+
+
+
 '''
 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. 
 Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
 '''
+
+print("\nES.8.15")
+
 
 '''
 8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. 
@@ -188,7 +234,13 @@ import module_name as mn
 from module_name import *
 '''
 
+print("\nES.8.16")
+
+
 '''
 8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they 
 follow the styling guidelines described in this section.
 '''
+
+print("\nES.8.17")
+
