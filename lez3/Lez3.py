@@ -6,8 +6,15 @@ Store these pizza names in a list, and then use a for loop to print the name of 
 • Modify your for loop to print a sentence using the name of the pizza, instead of printing just the name of the pizza. 
     For each pizza, you should have one line of output containing a simple statement like I like pepperoni pizza.
 • Add a line at the end of your program, outside the for loop, that states how much you like pizza. 
-    The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, such as I really love pizza!
+    The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence,
+    such as I really love pizza!
 '''
+
+print("\nES.4.1")
+pizzas=["margherita","boscaiola","diavola"]
+for i in pizzas:
+    print("I like",i,"pizza.")
+print("I love pizza!!")
 
 
 '''
@@ -18,14 +25,35 @@ Store the names of these animals in a list, and then use a for loop to print out
     You could print a sentence, such as Any of these animals would make a great pet!
 '''
 
+print("\nES.4.2")
+animals=["cat","dog","bunny"]
+for i in animals:
+    print(i)
+print("Dogs is a really friendly.")
+print("Cats pur while getting pet.")
+print("Bunnies loves carrot.")
+print("All these animal have fur.")
+
+
 '''
 4-3. Counting to Twenty: Use a for loop to print the numbers from 1 to 20, inclusive.
 '''
+
+print("\nES.4.3")
+for i in range(1,21):
+    print(i)
 
 '''
 4-4. One Million: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
 (If the output is taking too long, stop it by pressing CTRL-C or by closing the output window.)
 '''
+
+print("\nES.4.4")
+Million=[]
+for i in range(1,1000001):
+    Million.append(i)
+    #print(Million[i-1])
+
 
 '''
 4-5. Summing a Million: Make a list of the numbers from one to one million, 
@@ -33,14 +61,33 @@ and then use min() and max() to make sure your list actually starts at one and e
 Also, use the sum() function to see how quickly Python can add a million numbers.
 '''
 
+print("\nES.4.5")
+print(min(Million))
+print(max(Million))
+print(sum(Million))
+
 '''
 4-6. Odd Numbers: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. 
 Use a for loop to print each number.
 '''
 
+print("\nES.4.6")
+odd20=[]
+for i in range(1,21,2):
+    odd20.append(i)
+    print(i)
+
+
 '''
 4-7. Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
 '''
+
+print("\nES.4.7")
+mult3=[]
+for i in range(1,11):
+    mult3.append(i)
+    print(i)
+
 
 '''
 4-8. Cubes: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
@@ -48,9 +95,21 @@ Make a list of the first 10 cubes (that is, the cube of each integer from 1 thro
 and use a for loop to print out the value of each cube.
 '''
 
+print("\nES.4.8")
+cubes=[]
+for i in range(1,11):
+    c=i**3
+    cubes.append(c)
+    print(c)
+
 '''
 4-9. Cube Comprehension: Use a list comprehension to generate a list of the first 10 cubes.
 '''
+
+print("\nES.4.9")
+cube_comp=[i**3 for i in range(1,11)]
+print(cube_comp)
+
 
 '''
 4-10. Slices: Using one of the programs you wrote in this chapter, 
@@ -62,6 +121,12 @@ add several lines to the end of the program that do the following:
 • Print the message The last three items in the list are:. Then use a slice to print the last three items in the list.
 '''
 
+print("\nES.4.10")
+print("The first three items from the list are:",cubes[:3])
+print("Three iems form the middle of the list are:",cubes[-6:-3:1])
+print("The last three items from the list are:",cubes[-3:])
+
+
 '''
 4-11. My Pizzas, Your Pizzas: Start with your program from Exercise 4-1. 
 Make a copy of the list of pizzas, and call it friend_pizzas. Then, do the following:
@@ -72,11 +137,28 @@ Make a copy of the list of pizzas, and call it friend_pizzas. Then, do the follo
     Print the message My friend’s favorite pizzas are:, and then use a for loop to print the second list. 
     Make sure each new pizza is stored in the appropriate list.
 '''
+print("\nES.4.11")
+friend_pizzas=pizzas.copy()
+pizzas.append("crostino")
+friend_pizzas.append("quattro formaggi")
+
+print("My favorite pizzas are:")
+for i in pizzas:
+    print(i)
+
+print("\nMy friend's favorite pizzas are:")
+for i in friend_pizzas:
+    print(i)
+
 
 '''
 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. 
 Choose a version of foods.py, and write two for loops to print each list of foods.
 '''
+
+print("\nES.4.12")
+
+
 
 '''
 4-14. PEP 8: Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. 
@@ -86,6 +168,22 @@ You won’t use much of it now, but it might be interesting to skim through it.
 '''
 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 '''
+
+print("\nES.4.5")
+print(min(Million))
+print(max(Million))
+print(sum(Million))
+
+print("\nES.4.7")
+mult3=[]
+for i in range(1,11):
+    mult3.append(i)
+    print(i)
+
+print("\nES.4.9")
+cube_comp=[i**3 for i in range(1,11)]
+print(cube_comp)
+
 
 '''
 5-1. Conditional Tests: Write a series of conditional tests. Print a statement

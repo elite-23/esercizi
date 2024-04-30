@@ -116,7 +116,7 @@ loop=True
 while loop:
     ans=input("Do you wanna make an album? Y/N")
     if ans.upper()=="Y":
-        print("Here is the album you created:",make_album(input("Enter the name of the artist"),input("Enter the name of the album")))
+        print("Here is the album you created:",make_album(input("Enter the name of the artist: "),input("Enter the name of the album: ")))
     elif ans.upper()=="N":
         loop=False
     else:
@@ -165,7 +165,7 @@ After calling the function, print both of your lists to show that the original l
 '''
 
 print("\nES.8.11")
-copy=texts.copy
+copy=texts.copy()
 send_messages(copy)
 print(texts)
 print(copy)
@@ -183,6 +183,7 @@ def make_sandwich(*ingredients):
     print("The sandwitch will have:")
     for i in ingredients:
         print(i)
+    print()
 
 make_sandwich("bread","ham")
 make_sandwich("bread","ham","cheese","mayonase")
@@ -213,7 +214,11 @@ Print the dictionary that’s returned to make sure all the information was stor
 '''
 
 print("\nES.8.14")
+def make_car(manufacturer, model, color, plate):
+    return {"manufacturer":manufacturer,"model":model,"color":color,"plate":plate}
 
+car = make_car('subaru', 'outback', color='blue', plate="SS354XX")
+print(car)
 
 
 '''
@@ -222,6 +227,7 @@ Write an import statement at the top of printing_models.py, and modify the file 
 '''
 
 print("\nES.8.15")
+import printing_models
 
 
 '''
@@ -235,6 +241,11 @@ from module_name import *
 '''
 
 print("\nES.8.16")
+import lez4_4
+from lez4_4 import convert_to_title
+from lez4_4 import convert_to_title as conv
+import lez4_4 as l4_4
+from lez4_4 import *
 
 
 '''
