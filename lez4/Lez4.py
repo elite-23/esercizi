@@ -255,3 +255,27 @@ follow the styling guidelines described in this section.
 
 print("\nES.8.17")
 
+def make_car(
+        manufacturer, model, color, 
+        plate):
+    return {
+        "manufacturer":manufacturer,
+        "model":model,
+        "color":color,
+        "plate":plate
+        }
+
+
+def build_profile(
+        firstN, lastN, age, height,
+        weight):
+    print(firstN, lastN, ", age", age, 
+          ", height", height, ", weight" ,weight)
+
+
+def make_sandwich(*ingredients):
+    print("The sandwitch will have:")
+    
+    for i in ingredients:
+        print(i)
+    print()

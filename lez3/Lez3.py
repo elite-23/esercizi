@@ -156,7 +156,7 @@ for i in friend_pizzas:
 Choose a version of foods.py, and write two for loops to print each list of foods.
 '''
 
-print("\nES.4.12")
+print("\nES.4.12") 
 
 
 
@@ -168,20 +168,24 @@ You won’t use much of it now, but it might be interesting to skim through it.
 '''
 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 '''
+ 
+print("\nES.4.15")
 
-print("\nES.4.5")
+#ES.4.5
 print(min(Million))
 print(max(Million))
 print(sum(Million))
 
-print("\nES.4.7")
-mult3=[]
-for i in range(1,11):
+#ES.4.7
+mult3 = []
+for i in range(1, 11):
     mult3.append(i)
     print(i)
 
-print("\nES.4.9")
-cube_comp=[i**3 for i in range(1,11)]
+#ES.4.9
+cube_comp = [
+    i**3 for i in range(1, 11)
+    ]
 print(cube_comp)
 
 
@@ -199,7 +203,37 @@ evaluates to True or False.
 • Create at least 10 tests. Have at least 5 tests evaluate to True and another
 5 tests evaluate to False.
 '''
+print("\nES.5.1")
+lucky_number=23
+print("\nIs lucky_number == 23. I predict True.")
+print(lucky_number == 23)
 
+print("\nIs lucky_number == 13. I predict False.")
+print(lucky_number == 13)
+
+print("\nIs lucky_number+5 == 28. I predict True.")
+print(lucky_number+5 == 28)
+
+print("\nIs lucky_number+5 == 23. I predict False.")
+print(lucky_number+5 == 23)
+
+print("\nIs lucky_number%2 == 0. I predict False.")
+print(lucky_number%2 == 0)
+
+print("\nIs lucky_number/2 == 11.5. I predict True.")
+print(lucky_number/2 == 11.5)
+
+print("\nIs lucky_number > 8. I predict True.")
+print(lucky_number > 8)
+
+print("\nIs lucky_number < 8. I predict False.")
+print(lucky_number < 8)
+
+print("\nIs (lucky_number-3) % 2 == 0. I predict True.")
+print((lucky_number-3) % 2 == 0)
+
+print("\nIs lucky_number != 23. I predict False.")
+print(lucky_number != 23)
 
 '''
 5-2. More Conditional Tests: You don’t have to limit the number of tests you cre-
@@ -214,6 +248,9 @@ the following:
 • Test whether an item is in a list
 • Test whether an item is not in a list
 '''
+print("\nES.5.2")
+import conditional_tests
+
 
 '''
 5-3. Alien Colors #1: Imagine an alien was just shot down in a game. 
@@ -222,12 +259,36 @@ Create a variable called alien_color and assign it a value of 'green', 'yellow',
 • Write one version of this program that passes the if test and another that fails. (The version that fails will have no output.)
 '''
 
+print("\nES.5.3")
+alien_color="green"
+if alien_color=="green":
+    print("You just earned 5 points!!")
+
+alien_color="yellow"
+if alien_color=="green":
+    print("You just earned 5 points!!")
+
+
 '''
 5-4. Alien Colors #2: Choose a color for an alien as you did in Exercise 5-3, and write an if-else chain.
 • If the alien’s color is green, print a statement that the player just earned 5 points for shooting the alien.
 • If the alien’s color isn’t green, print a statement that the player just earned 10 points.
 • Write one version of this program that runs the if block and another that runs the else block.
 '''
+
+print("\nES.5.4")
+#ELSE BLOCK RUNS
+if alien_color=="green":
+    print("You just earned 5 points!!")
+else:
+    print("You just earned 10 points!!!!")
+
+#IF BLOCK RUNS
+alien_color="green"
+if alien_color=="green":
+    print("You just earned 5 points!!")
+else:
+    print("You just earned 10 points!!!!")
 
 '''
 5-5. Alien Colors #3: Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
@@ -236,6 +297,39 @@ Create a variable called alien_color and assign it a value of 'green', 'yellow',
 • If the alien is red, print a message that the player earned 15 points.
 • Write three versions of this program, making sure each message is printed for the appropriate color alien.
 '''
+
+print("\nES.5.5")
+#IF BLOCK RUNS
+if alien_color=="green":
+    print("You just earned 5 points!!")
+
+elif alien_color=="yellow":
+    print("You just earned 10 points!!!!")
+
+else:
+    print("You just earned 15 points!!!!")
+
+#ELIF BLOCK RUNS
+alien_color="yellow"
+if alien_color=="green":
+    print("You just earned 5 points!!")
+
+elif alien_color=="yellow":
+    print("You just earned 10 points!!!!")
+
+else:
+    print("You just earned 15 points!!!!")
+
+#ELSE BLOCK RUNS
+alien_color="red"
+if alien_color=="green":
+    print("You just earned 5 points!!")
+
+elif alien_color=="yellow":
+    print("You just earned 10 points!!!!")
+
+else:
+    print("You just earned 15 points!!!!")
 
 '''
 5-6. Stages of Life: Write an if-elif-else chain that determines a person’s stage of life. 
@@ -248,6 +342,27 @@ Set a value for the variable age, and then:
 • If the person is age 65 or older, print a message that the person is an elder.
 '''
 
+print("\nES.5.6")
+
+age=3
+if age<2:
+    print("The person is a baby.")
+
+elif age>=2 and age<4:
+    print("The person is a toddler.")
+
+elif age>=4 and age<13:
+    print("The person is a kid.")
+
+elif age>=13 and age<20:
+    print("The person is a teenager.")
+
+elif age>=20 and age<65:
+    print("The person is a adult.")
+
+elif age<=65:
+    print("The person is a elder.")
+
 '''
 5-7. Favorite Fruit: Make a list of your favorite fruits, 
 and then write a series of independent if statements that check for certain fruits in your list.
@@ -255,6 +370,24 @@ and then write a series of independent if statements that check for certain frui
 • Write five if statements. Each should check whether a certain kind of fruit is in your list. 
     If the fruit is in your list, the if block should print a statement, such as You really like Apples!
 '''
+
+print("\nES.5.7")
+favourites_fruits=["apple","banana","melon"]
+if "apple" in favourites_fruits:
+    print("You really like apple.")
+
+if "cherry" in favourites_fruits:
+    print("You really like cherry.")
+
+if "banana" in favourites_fruits:
+    print("You really like banana.")
+
+if "kiwi" in favourites_fruits:
+    print("You really like kiwi.")
+
+if "melon" in favourites_fruits:
+    print("You really like melon.")
+
 
 '''
 5-8. Hello Admin: Make a list of five or more usernames, including the name 'admin'. 
@@ -264,11 +397,32 @@ Loop through the list, and print a greeting to each user.
 • Otherwise, print a generic greeting, such as Hello Jaden, thank you for logging in again.
 '''
 
+print("\nES.5.8")
+usernames=["Luca","Samuel","Giorgio","admin","Tiziano"]
+for i in usernames:
+    if i == "admin":
+        print("Hello admin, would you like to see a status report?")
+    else:
+        print("Hello",i,"welcome back to your account.")
+
+
 '''
 5-9. No Users: Add an if test to hello_admin.py to make sure the list of users is not empty.
 • If the list is empty, print the message We need to find some users!
 • Remove all of the usernames from your list, and make sure the correct message is printed.
 '''
+
+print("\nES.5.9")
+usernames=[]
+if len(usernames) !=0:
+    for i in usernames:
+        if i == "admin":
+            print("Hello admin, would you like to see a status report?")
+        else:
+            print("Hello",i,"welcome back to your account.")
+else:
+    print("WE NEED TO FIND SOME USERSSSS!!")
+
 
 '''
 5-10. Checking Usernames: Do the following to create a program that simulates 
@@ -283,6 +437,18 @@ how websites ensure that everyone has a unique username.
     (To do this, you’ll need to make a copy of current_users containing the lowercase versions of all existing users.)
 '''
 
+print("\nES.5.10")
+current_users=["Luca","Samuel","Giorgio","admin","Tiziano"]
+new_users=["Luca","Michele","Jacopo","Giorgio","Luigi"]
+
+for i in new_users:
+    if i.casefold() in (j.casefold() for j in current_users):
+        print("This username is already in use choose a different one:",i)
+    
+    else:
+        print("Ok, this username is available:",i)
+
+
 '''
 5-11. Ordinal Numbers: Ordinal numbers indicate their position in a list, such as 1st or 2nd. 
 Most ordinal numbers end in th, except 1, 2, and 3.
@@ -291,3 +457,15 @@ Most ordinal numbers end in th, except 1, 2, and 3.
 • Use an if-elif-else chain inside the loop to print the proper ordinal ending for each number. 
     Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and each result should be on a separate line.
 '''
+
+print("\nES.5.11")
+nums=[1,2,3,4,5,6,7,8,9]
+for i in nums:
+    if i == 1:
+        print("1st")
+    elif i == 2:
+        print("2nd")
+    elif i == 3:
+        print("3rd")
+    else:
+        print(str(i)+"th")    
