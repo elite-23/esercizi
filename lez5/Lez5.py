@@ -110,11 +110,32 @@ Write a function called modify_event() that accepts a dictionary, an event name,
 Example: modify_event(dictionary, "Code Workshop", ["Alice", "Bob", "Charlie"], ”4pm”)
 '''
 
-print("\nES.4.1")
 
+def plan_event(name:str, participants:list, hour:str):
+    return {name:participants}
+
+print("\nES.4.1")
+events={}
+events.update(plan_event("Brunch",["Pippo","Pluto","Paperino"],"12am"))
+print(events)
+events.update(plan_event("The -inos",["Gino","Tino","Pino","Fino"],"7pm"))
+print(events)
+events.update(plan_event("Alone time",["Me"],"2am"))
+print(events)
+
+
+def modify_event(old_events:dict ,name:str, participants:list, hour:str):
+    return(old_events.update({name:participants}))
 
 print("\nES.4.2")
+modify_event(events, "Brunch",["Pippo","Topolino"],"12am")
+print(events)
 
+modify_event(events, "The -inos",["Gino","Tino","Pino","Fino","Lino"],"7pm")
+print(events)
+
+modify_event(events, "Alone time",["Me","Myself"],"2am")
+print(events) 
 
 
 
