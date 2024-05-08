@@ -153,6 +153,23 @@ Example: print_shopping_list(dictionary, "Grocery Store")
 '''
 
 print("\nES.5.1")
+def create_shopping_list(store_name :str, *item :str):
+    items_set=[]
+    for i in item:
+        items_set.append(i)
+    return {"name":store_name,"items":set(items_set)}
 
+print(create_shopping_list("Grocery Store", "Milk", "Eggs", "Bread"))
+print(create_shopping_list("Conad", "Cookies", "Sausage", "Meat","Ice Cream"))
+print(create_shopping_list("Super Elite", "Milk", "Eggs", "Bread","Pizza","Mozzarella"))
 
 print("\nES.5.2")
+def print_shopping_list(shopping_list :dict, store_name :str):
+    print("The shopping list of the",store_name,"is:")
+    for i in shopping_list.values():
+        print(i)
+    print()
+
+print_shopping_list({1:"Milk",2:"Bread"},"Grocery store")
+print_shopping_list({1:"Milk",2:"Bread",3:"Pizza"},"Super Elite")
+print_shopping_list({1:"Milk",2:"Bread",3:"Cookies",4:"Ice cream"},"Conad")
