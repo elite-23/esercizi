@@ -65,6 +65,17 @@ class Animal:
         self.width=width
         self.preferred_habitat=preferred_habitat
         self.health=round(100 * (1 / age), 3)
+
+    def __str__(self) -> str:
+        return "Animal(name="+self.name+", species="+self.species+", age="+str(self.age)+", height="+str(self.height)+",width="+str(self.width)+", preferred_habitat="+self.preferred_habitat+")\n"
+    
+    def __eq__(self, value :object) -> bool:
+        if self.name==value.name:
+            return True
+        else:
+            return False
+    
+    
     
 
 
@@ -73,22 +84,53 @@ class Fence:
         self.area=area
         self.temperature=temperature
         self.habitat=habitat
+        self.animals :list[Animal]=[]
+    
+    def __str__(self) -> str:
+        if len(self.animals)==0:
+            return "Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")\n\nWith animals:\n\n\tNone"
+        else:
+            f="Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")\n\nWith animals:\n"
+            for i in self.animals:
+                f+="\n\t"+i.__str__()
+            return f
 
+
+    def add_animal(self,animal :Animal) -> None:
+        self.area= self.area - (animal.height*animal.width)
+        self.animals.append(animal)
+
+    def remove_animal(self, animal :Animal) -> None:
+        for i in self.animals:
+            if i==animal:
+                self.animals.remove(animal)
+                self.area= self.area + (animal.height*animal.width)
+                break
 
 class ZooKeeper:
-    def __init__(self,nome :str, cognome :str, id :int) -> None:
-        self.nome=nome
-        self.cognome=cognome
+    def __init__(self,name :str, surname :str, id :int) -> None:
+        self.name=name
+        self.surname=surname
         self.id=id
 
-    def add_animal(animal: Animal, fence: Fence):
-        if animal.preferred_habitat==fence.habitat:
-            if animal.height*animal.width<=fence.area:
-                pass
+    def __str__(self) -> str:
+        return "ZooKeeper(name="+self.name+", surname="+self.surname+", id="+str(self.id)+")\n"
 
-    def remove_animal(animal: Animal, fence: Fence):
-        pass
-        
+    def add_animal(self, animal: Animal, fence: Fence) -> None:
+        if animal.preferred_habitat==fence.habitat:
+            if animal.height*animal.width <= fence.area:
+                fence.add_animal(animal)
+            else:
+                print("The animal can't fit in the fence because it's too big.")
+        else:
+            print("The animal can't be put in this fence because its ideal habitat is different.")
+
+    def remove_animal(self, animal: Animal, fence: Fence) -> None:
+        if animal in fence.animals:
+            fence.remove_animal(animal)
+        else:
+            print("This animal is not present in this fence.")
+
     def feed(animal: Animal):
         pass
 
@@ -101,5 +143,29 @@ class Zoo:
         self.fences=fences
         self.zoo_keepers=zoo_keepers
 
+    def __str__(self) -> str:
+        
+        z="GUARDIANS:\n"
+        for i in self.zoo_keepers:
+            z+="\n\t"+i.__str__()
+        
+        z+="\nFENCES:\n"
+        for i in self.fences:
+            z+="\n\t"+i.__str__()
+            z+="\n##############################\n"
+        
+        return z
+
     def describe_zoo(self):
-        pass
+        print(self.__str__())
+
+A1=Animal("Sandro","scorpione",1,0.2,0.2,"sand")
+A2=Animal("Pietro","Schimmia",12,1.2,0.5,"jungle")
+F1=Fence(45,23,"jungle")
+F2=Fence(133,12,"sand")
+K1=ZooKeeper("Gaia","Flati",1)
+K2=ZooKeeper("Luca","Cavalleri",2)
+Z=Zoo([F1,F2],[K1,K2])
+K1.add_animal(A1,F2)
+K2.add_animal(A2,F1)
+Z.describe_zoo()
