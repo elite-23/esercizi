@@ -73,12 +73,11 @@ class Animal:
     def __eq__(self, value :object) -> bool:
         return self.name==value.name and self.species==value.species
     
-    def in_fence(self,fence):
+    def put_in_fence(self,fence):
         self.fence=fence
 
     def removed_from_fence(self):
-        if self.fence:
-            self.fence=None
+        self.fence=None
 
     
     
@@ -98,6 +97,7 @@ class Fence:
             return f
         else:
             return "Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")"
+
 
     def add_animal(self,animal :Animal) -> None:
         self.area_left= round(self.area_left - (animal.height*animal.width),3)
@@ -125,9 +125,8 @@ class ZooKeeper:
         if animal and isinstance(animal, Animal) and fence and isinstance(fence, Fence) and animal.preferred_habitat==fence.habitat:
 
             if animal.height*animal.width <= fence.area_left:
-                
                 fence.add_animal(animal)
-                animal.in_fence(fence)
+                animal.put_in_fence(fence)
 
     def remove_animal(self, animal: Animal, fence: Fence) -> None:
         if animal and isinstance(animal, Animal) and fence and isinstance(fence, Fence) and animal in fence.animals:
@@ -141,12 +140,11 @@ class ZooKeeper:
             Nwidth=round(animal.width+(animal.width*0.02),3)
             Nheight=round(animal.height+(animal.height*0.02),3)
             
-            if fence!=None:
-                if fence.area_left>= Nheight*Nwidth:
-                    
-                    fence.area_left-=round((Nwidth*Nheight) - (animal.width*animal.height),3)
-                    animal.height=Nheight
-                    animal.width=Nwidth
+            if fence and fence.area_left>= Nheight*Nwidth:        
+                fence.area_left-=round((Nwidth*Nheight) - (animal.width*animal.height),3)
+                animal.height=Nheight
+                animal.width=Nwidth
+                animal.health+=round(animal.health*0.01,3)
 
     def clean(self, fence: Fence):
         if fence and isinstance(fence, Fence):
@@ -193,19 +191,18 @@ class Zoo:
     def describe_zoo(self):
         print(self.__str__())
 
-A1=Animal("Sandro","scorpione",1,2,59,"sand")
+A1=Animal("Sandro","scorpione",1,2,60,"sand")
 A2=Animal("Pietro","Schimmia",12,1.2,0.5,"jungle")
 F1=Fence(45,23,"jungle")
 F2=Fence(120,12,"sand")
 K1=ZooKeeper("Gaia","Flati",1)
 K2=ZooKeeper("Luca","Cavalleri",2)
-Z=Zoo([F1,F2],[K2])
+Z=Zoo([F1,F2],[K1,K2])
 K1.add_animal(A1,F2)
 K2.add_animal(A2,F1)
-#Z.describe_zoo()
+Z.describe_zoo()
 K1.feed(A1)
 K2.feed(A2)
-K1.remove_animal(A1,F2)
-#Z.describe_zoo()
-Z2=Zoo("lel",["tttt"])
-print(Z2)
+
+Z.describe_zoo()
+print(K1.clean(F2))
