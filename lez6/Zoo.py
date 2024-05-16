@@ -68,7 +68,7 @@ class Animal:
         self.fence=None
 
     def __str__(self) -> str:
-        return "Animal(name="+self.name+", species="+self.species+", age="+str(self.age)+", height="+str(self.height)+",width="+str(self.width)+", preferred_habitat="+self.preferred_habitat+")\n"
+        return "Animal(name="+self.name+", species="+self.species+", age="+str(self.age)+", height="+str(self.height)+", width="+str(self.width)+", preferred_habitat="+self.preferred_habitat+")\n"
     
     def __eq__(self, value :object) -> bool:
         return self.name==value.name and self.species==value.species
@@ -83,17 +83,17 @@ class Animal:
     
 class Fence:
     def __init__(self, area :float, temperature :float, habitat :str) -> None:
-        self.area=round(area,3)
-        self.temperature=round(temperature,3)
+        self.area=area
+        self.temperature=temperature
         self.habitat=habitat
         self.animals :list[Animal]=[]
         self.area_left=area
     
     def __str__(self) -> str:
         if len(self.animals)>0:
-            f="Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")\nWith animals:\n"
+            f="Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")\nwith animals:\n"
             for i in self.animals:
-                f+="\t"+i.__str__()
+                f+=i.__str__()
             return f
         else:
             return "Fence(area="+str(self.area)+", temperature="+str(self.temperature)+", habitat="+self.habitat+")"
@@ -122,7 +122,7 @@ class ZooKeeper:
 
 
     def add_animal(self, animal: Animal, fence: Fence) -> None:
-        if animal and isinstance(animal, Animal) and fence and isinstance(fence, Fence) and animal.preferred_habitat==fence.habitat:
+        if animal and isinstance(animal, Animal) and fence and isinstance(fence, Fence) and animal.preferred_habitat==fence.habitat and animal.fence==None:
 
             if animal.height*animal.width <= fence.area_left:
                 fence.add_animal(animal)
@@ -156,6 +156,7 @@ class ZooKeeper:
         
 
 class Zoo:
+
     def __init__(self,fences :list[Fence], zoo_keepers :list[ZooKeeper]) -> None:
         if fences and isinstance(fences, list) and isinstance(fences[0],Fence) and zoo_keepers and isinstance(zoo_keepers, list) and isinstance(zoo_keepers[0],ZooKeeper):
             self.fences=fences
@@ -163,46 +164,27 @@ class Zoo:
         else:
             self.fences=[]
             self.zoo_keepers=[]
-        
 
-    def __str__(self) -> str:
+    def describe_zoo(self):
         go=False
         z=""
         if len(self.zoo_keepers)>0:
             z="Guardians:\n"
             for i in self.zoo_keepers:
-                z+="\t"+i.__str__()
+                z+=i.__str__()
             
         for i in self.fences:
             if len(i.animals)!=0:
                 go=True
                 break
+
         if go:
             z+="Fences:\n"
             for i in range(len(self.fences)):
                 if len(self.fences[i].animals)!=0:
-                    z+="\t"+self.fences[i].__str__()
+                    z+=""+self.fences[i].__str__()
                     if i+1<len(self.fences):
                         if len(self.fences[i+1].animals)!=0:
                             z+="##############################\n"
         
-        return z
-
-    def describe_zoo(self):
-        print(self.__str__())
-
-A1=Animal("Sandro","scorpione",1,2,60,"sand")
-A2=Animal("Pietro","Schimmia",12,1.2,0.5,"jungle")
-F1=Fence(45,23,"jungle")
-F2=Fence(120,12,"sand")
-K1=ZooKeeper("Gaia","Flati",1)
-K2=ZooKeeper("Luca","Cavalleri",2)
-Z=Zoo([F1,F2],[K1,K2])
-K1.add_animal(A1,F2)
-K2.add_animal(A2,F1)
-Z.describe_zoo()
-K1.feed(A1)
-K2.feed(A2)
-
-Z.describe_zoo()
-print(K1.clean(F2))
+        print(z)
