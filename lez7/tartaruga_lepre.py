@@ -55,7 +55,7 @@ Modificatori mossa:
 - La Tartaruga in caso di pioggia subisce penalità -1 su ogni mossa. In caso di sole non subisce variazioni.
 - La Lepre in caso di pioggia subisca una penalità -2 su ogni mossa. In caso di sole non subisce variazioni.
  
-2. Energia o Stamina:
+X 2. Energia o Stamina:
 Aggiungere una metrica di "energia" o "stamina" che diminuisce con ogni movimento e si ricarica in specifiche condizioni. 
 Fare in modo che le mosse che consumano più energia non possano essere eseguite se l'animale non ha abbastanza energia. L'energia inziale per entrambi gli animali è 100.
 
@@ -97,43 +97,53 @@ class Tartaruga:
         self.pos=0
 
 
-    def Passoveloce(self):
+    def Passoveloce(self, pioggia=0):
         if self.stamina>=5:
             self.stamina-=5
-            if self.pos+3>69:
+            if self.pos+3+pioggia>69:
                 self.pos=69
             else:
-                self.pos+=3
+                self.pos+=3+pioggia
         else:
             self.stamina+=10
         
 
-    def Scivolata (self):
-        if self.pos-6>=1 and self.stamina>=10:
-            self.pos-=6
+    def Scivolata (self, pioggia=0):
+        if self.pos-6+pioggia>=0 and self.stamina>=10:
+            self.pos-=6+pioggia
             self.stamina-=10
-        elif self.pos-6<1 and self.stamina>=10:
-            self.pos=1
+        elif self.pos-6+pioggia<0 and self.stamina>=10:
+            self.pos=0
             self.stamina-=10
         else:
             self.stamina+=10
         
     
-    def Passolento(self):
+    def Passolento(self, pioggia=0):
         if self.stamina>=3:
             self.stamina-=3
-            self.pos+=1
+            self.pos+=1+pioggia
         else:
             self.stamina+=10
 
-    def round(self):
+    def round(self, p):
         x=random.randint(1,10)
-        if x<=5:
-            self.Passoveloce()
-        elif x<=7:
-            self.Scivolata()
-        elif x<=10:
-            self.Passolento()
+        if (p//10)%2==0:
+            print("SOleeeeee")
+            if x<=5:
+                self.Passoveloce()
+            elif x<=7:
+                self.Scivolata()
+            elif x<=10:
+                self.Passolento()
+        else:
+            print("PIOGGIAAAAAAA")
+            if x<=5:
+                self.Passoveloce(-1)
+            elif x<=7:
+                self.Scivolata(-1)
+            elif x<=10:
+                self.Passolento(-1)
 
 
 class Lepre:
@@ -149,77 +159,93 @@ class Lepre:
             self.stamina=100
         
     
-    def Grandebalzo (self): 
+    def Grandebalzo (self, pioggia=0): 
         if self.stamina>=15:
             self.stamina-=15
-            if self.pos+9>69:
+            if self.pos+9+pioggia>69:
                 self.pos=69
             else:
-                self.pos+=9
+                self.pos+=9+pioggia
         else:
             self.stamina+=10
     
-    def Grandescivolata (self): 
-        if self.pos-12>=1 and self.stamina>=20:
-            self.pos-=12
+    def Grandescivolata (self, pioggia=0): 
+        if self.pos-12+pioggia>=1 and self.stamina>=20:
+            self.pos-=12+pioggia
             self.stamina-=20
-        elif self.pos-12<1 and self.stamina>=20:
-            self.pos=1
+        elif self.pos-12+pioggia<0 and self.stamina>=20:
+            self.pos=0
             self.stamina-=20
         else:
             self.stamina+=10
     
-    def Piccolobalzo (self):
-        if self.stamina>=5:
+    def Piccolobalzo (self, pioggia=0):
+        if self.stamina>=5 and self.pos+1+pioggia>=0:
             self.stamina-=5
-            self.pos+=1
+            self.pos+=1+pioggia
+        elif self.stamina>=5 and self.pos+1+pioggia<0:
+            self.pos=0
         else:
             self.stamina+=10
         
     
-    def Piccolascivolata (self): 
-        if self.pos-2>=1 and self.stamina>=8:
-            self.pos-=2
+    def Piccolascivolata (self, pioggia=0): 
+        if self.pos-2+pioggia>=0 and self.stamina>=8:
+            self.pos-=2+pioggia
             self.stamina-=8
-        elif self.pos-2<1 and self.stamina>=8:
-            self.pos=1
+        elif self.pos-2+pioggia<0 and self.stamina>=8:
+            self.pos=0
             self.stamina-=8
         else:
             self.stamina+=10
 
-    def round(self):
+    def round(self, p):
         x=random.randint(1,10)
-        if x<=2:
-            self.Riposo()
-        elif x<=4:
-            self.Grandebalzo()
-        elif x==5:
-            self.Grandescivolata
-        elif x<=8:
-            self.Piccolobalzo()
-        elif x<=10:
-            self.Piccolascivolata()
+        if (p//10)%2==0 :
+            if x<=2:
+                self.Riposo()
+            elif x<=4:
+                self.Grandebalzo()
+            elif x==5:
+                self.Grandescivolata()
+            elif x<=8:
+                self.Piccolobalzo()
+            elif x<=10:
+                self.Piccolascivolata()
+        else:
+            if x<=2:
+                self.Riposo()
+            elif x<=4:
+                self.Grandebalzo(-2)
+            elif x==5:
+                self.Grandescivolata(-2)
+            elif x<=8:
+                self.Piccolobalzo(-2)
+            elif x<=10:
+                self.Piccolascivolata(-2)
 
 
 class Gara:
     def __init__(self) -> None:
         self.percorso=["="]*70
+        self.pioggia=-1
 
     def start(self, T :Tartaruga, L :Lepre):
         print("BANG !!!!! AND THEY'RE OFF !!!!!")
         while self.percorso[-1]=="=":
-            print("1",T.pos)
-            self.percorso[T.pos]=="="
-            self.percorso[L.pos]=="="
-            T.round()
+            self.pioggia+=1
+            self.percorso[T.pos]="="
+            self.percorso[L.pos]="="
+            T.round(self.pioggia)
             self.percorso[T.pos]="T"
-            L.round()
+            L.round(self.pioggia)
+
             if self.percorso[L.pos]=="T":
                 self.percorso[L.pos]="OUCH!!!"
             else:
                 self.percorso[L.pos]="H"
-            print("2",T.pos)
             print("".join(self.percorso))
+
         if self.percorso[-1]=="T":
             print("TORTOISE WINS! || VAY!!!")
         elif self.percorso[-1]=="H":
