@@ -71,9 +71,9 @@ class Animal:
         return "Animal(name="+self.name+", species="+self.species+", age="+str(self.age)+", height="+str(self.height)+", width="+str(self.width)+", preferred_habitat="+self.preferred_habitat+")\n"
     
     def __eq__(self, value :object) -> bool:
-        return self.name==value.name and self.species==value.species
+        return self.name==value.name and self.species==value.species # type: ignore
     
-    def put_in_fence(self,fence):
+    def put_in_fence(self,fence :object):
         self.fence=fence
 
     def removed_from_fence(self):

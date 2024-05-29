@@ -1,6 +1,6 @@
 '''
 In questo problema ricreerete la classica gara tra la tartaruga e la lepre. Userete la generazione di numeri casuali per sviluppare una simulazione di questo memorabile evento.
- I contendenti iniziano la gara dal quadrato \#1 di un percorso composto da 70 quadrati. Ogni quadrato rappresenta una posizione lungo il percorso della corsa.
+ I contendenti iniziano la gara dal quadrato #1 di un percorso composto da 70 quadrati. Ogni quadrato rappresenta una posizione lungo il percorso della corsa.
    Il traguardo è al quadrato 70 e il contendente che raggiunge per primo o supera questa posizione vince la gara.
      Durante la corsa, i contendenti possono occasionalmente perdere terreno. 
      C'è un orologio che conta i secondi. Ad ogni tick dell'orologio, il vostro programma deve aggiornare la posizione degli animali secondo le seguenti regole:
@@ -46,7 +46,7 @@ Requisiti del Codice:
 - Implementare un loop per simulare i tick dell'orologio. Ad ogni tick, calcolare le mosse, mostrare la posizione sulla corsia di gara, e determinare l'eventuale fine della gara.
  
 SFIDE AGGIUNTIVE:
-1. Variabilità Ambientale:
+X1. Variabilità Ambientale:
 Introdurre fattori ambientali che possono influenzare la corsa, come il meteo.
 Ad esempio, la pioggia può ridurre la velocità di avanzamento o aumentare la probabilità di scivolate per entrambi i concorrenti. 
 Implementare un sistema dove le condizioni 'soleggiato' e 'pioggia' cambiano dinamicamente ogni 10 tick dell'orologio.
@@ -97,7 +97,7 @@ class Tartaruga:
         self.pos=0
 
 
-    def Passoveloce(self, pioggia=0):
+    def Passoveloce(self, pioggia :int =0):
         if self.stamina>=5:
             self.stamina-=5
             if self.pos+3+pioggia>69:
@@ -108,7 +108,7 @@ class Tartaruga:
             self.stamina+=10
         
 
-    def Scivolata (self, pioggia=0):
+    def Scivolata (self, pioggia :int =0):
         if self.pos-6+pioggia>=0 and self.stamina>=10:
             self.pos-=6+pioggia
             self.stamina-=10
@@ -119,17 +119,17 @@ class Tartaruga:
             self.stamina+=10
         
     
-    def Passolento(self, pioggia=0):
+    def Passolento(self, pioggia :int =0):
         if self.stamina>=3:
             self.stamina-=3
             self.pos+=1+pioggia
         else:
             self.stamina+=10
 
-    def round(self, p):
+    def round(self, p :int):
         x=random.randint(1,10)
         if (p//10)%2==0:
-            print("SOleeeeee")
+            #print("SOleeeeee")
             if x<=5:
                 self.Passoveloce()
             elif x<=7:
@@ -137,7 +137,7 @@ class Tartaruga:
             elif x<=10:
                 self.Passolento()
         else:
-            print("PIOGGIAAAAAAA")
+            #print("PIOGGIAAAAAAA")
             if x<=5:
                 self.Passoveloce(-1)
             elif x<=7:
@@ -159,7 +159,7 @@ class Lepre:
             self.stamina=100
         
     
-    def Grandebalzo (self, pioggia=0): 
+    def Grandebalzo (self, pioggia :int=0): 
         if self.stamina>=15:
             self.stamina-=15
             if self.pos+9+pioggia>69:
@@ -169,7 +169,7 @@ class Lepre:
         else:
             self.stamina+=10
     
-    def Grandescivolata (self, pioggia=0): 
+    def Grandescivolata (self, pioggia :int=0): 
         if self.pos-12+pioggia>=1 and self.stamina>=20:
             self.pos-=12+pioggia
             self.stamina-=20
@@ -179,7 +179,7 @@ class Lepre:
         else:
             self.stamina+=10
     
-    def Piccolobalzo (self, pioggia=0):
+    def Piccolobalzo (self, pioggia :int=0):
         if self.stamina>=5 and self.pos+1+pioggia>=0:
             self.stamina-=5
             self.pos+=1+pioggia
@@ -189,7 +189,7 @@ class Lepre:
             self.stamina+=10
         
     
-    def Piccolascivolata (self, pioggia=0): 
+    def Piccolascivolata (self, pioggia :int=0): 
         if self.pos-2+pioggia>=0 and self.stamina>=8:
             self.pos-=2+pioggia
             self.stamina-=8
@@ -199,7 +199,7 @@ class Lepre:
         else:
             self.stamina+=10
 
-    def round(self, p):
+    def round(self, p :int):
         x=random.randint(1,10)
         if (p//10)%2==0 :
             if x<=2:
@@ -227,22 +227,40 @@ class Lepre:
 
 class Gara:
     def __init__(self) -> None:
-        self.percorso=["="]*70
         self.pioggia=-1
+        self.bonus={2:3,4:3,8:5,16:3,32:7,64:4}
+        self.ostacolo={10:-4,20:-2,30:-3,40:-6,50:-1,60:-5}
+        self.percorso=["+" if i in self.bonus.keys()  else "-" for i in range(70)]
+        for i in self.ostacolo.keys():
+            self.percorso[i]="/"
 
+            
     def start(self, T :Tartaruga, L :Lepre):
         print("BANG !!!!! AND THEY'RE OFF !!!!!")
-        while self.percorso[-1]=="=":
+        while self.percorso[-1]=="-":
             self.pioggia+=1
-            self.percorso[T.pos]="="
-            self.percorso[L.pos]="="
+            self.percorso[T.pos]="-"
+            self.percorso[L.pos]="-"
+            
             T.round(self.pioggia)
+            if T.pos in self.bonus.keys():
+                #print("BONUSSSS - Tortoise")
+                T.pos+=self.bonus[T.pos]
+            elif T.pos in self.ostacolo.keys():
+                #print("Obstacleee - Tortoise")
+                T.pos+=self.ostacolo[T.pos]
             self.percorso[T.pos]="T"
+            
             L.round(self.pioggia)
-
             if self.percorso[L.pos]=="T":
                 self.percorso[L.pos]="OUCH!!!"
             else:
+                if L.pos in self.bonus.keys():
+                    #print("BONUSSSS - Hare")
+                    L.pos+=self.bonus[L.pos]
+                elif L.pos in self.ostacolo.keys():
+                    #print("Obstacleee - Hare")
+                    L.pos+=self.ostacolo[L.pos]
                 self.percorso[L.pos]="H"
             print("".join(self.percorso))
 
