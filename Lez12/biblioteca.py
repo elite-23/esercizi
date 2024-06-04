@@ -1,6 +1,9 @@
 """
 Sistema di Gestione Biblioteca
-Si desidera sviluppare un sistema per la gestione di una biblioteca in Python. Il sistema deve permettere di gestire un inventario di libri e le operazioni di prestito e restituzione degli stessi. Gli utenti del sistema devono essere in grado di aggiungere libri al catalogo, prestarli, restituirli e visualizzare quali libri sono disponibili in un dato momento.
+Si desidera sviluppare un sistema per la gestione di una biblioteca in Python. 
+Il sistema deve permettere di gestire un inventario di libri e le operazioni di prestito e restituzione degli stessi. 
+Gli utenti del sistema devono essere in grado di aggiungere libri al catalogo, prestarli, restituirli e visualizzare quali libri 
+sono disponibili in un dato momento.
  
 Classi:
 - Libro: Rappresenta un libro con titolo, autore, stato del prestito. Il libro deve essere inizialmente disponibile (non prestato).
@@ -42,31 +45,32 @@ class Book:
 class Library:
     def __init__(self):
         self.books :dict[str,Book] ={}
+        self.borrowed_books=[]
     
     
-    def add_book(self,book_id: str, title: str, author: str):
-        if book_id not in self.books.keys():
-            book=Book(book_id, title, author)
-            self.books[book_id]=book
+    def add_book(self, title: str, author: str):
+        if title not in self.books.keys():
+            book=Book( title, author)
+            self.books[title]=book
         else:
             print("Book already present")
     
-    def borrow_book(self, book_id: str):
-        if book_id in self.books.keys():
-            self.books[book_id].borrow_book(self.books[book_id])
+    def borrow_book(self, title: str):
+        if title in self.books.keys():
+            self.books[title].borrow(self.books[title])
+            self.borrowed_books.append(self.books[title])
         else:
             print("Book not found")
         
     
-    def return_book(self,member_id: str, book_id: str):
-        if member_id in self.members.keys():
-            self.members[member_id].return_book(self.books[book_id])
-    
-    def get_borrowed_books(self,member_id):
-        list=[]
-        for i in self.members[member_id].borrowed_books:
-            list.append(i.title)
-        return list
-    
-    
+    def return_book(self, title: str):
+        if title in self.books.keys():
+            self.books[title].return_book()
+            self.borrowed_books.remove(self.books[title])
+
+    def mostra_libri_disponibili(self):
+        if len(self.books)-len(self.borrowed_books)!=0:
+            print(self.books.values().remove(i for i in self.borrowed_books))
+        else:
+            print("Sto cazzoooooooo niente libri disponibili.")
     
