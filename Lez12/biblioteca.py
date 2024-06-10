@@ -70,7 +70,7 @@ class Library:
 
     def mostra_libri_disponibili(self):
         if len(self.books)-len(self.borrowed_books)!=0:
-            print(self.books.values().remove(i for i in self.borrowed_books))
+            print(list(self.books.values()).remove(i for i in self.borrowed_books))
         else:
             print("Sto cazzoooooooo niente libri disponibili.")
     
