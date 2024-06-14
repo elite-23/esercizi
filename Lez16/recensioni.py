@@ -16,7 +16,8 @@ Metodi:
 - getMedia(self): Calcola e restituisce la media delle valutazioni.
 - getRate(self): Restituisce una stringa che descrive il giudizio medio del media basato sulla media delle valutazioni.
 - ratePercentage(self, voto): Calcola e restituisce la percentuale di un voto specifico nelle recensioni.
-- recensione(self): Mostra un riassunto delle recensioni e delle valutazioni del media, stampando il titolo, il voto medio, il giudizio e le percentuali di ciascun voto. 
+- recensione(self): Mostra un riassunto delle recensioni e delle valutazioni del media, stampando il titolo, il voto medio, il giudizio e le 
+    percentuali di ciascun voto. 
 Esempio di riassunto:
 
 Titolo del Film: The Shawshank Redemption
@@ -28,7 +29,8 @@ Normale: 10.00%
 Bello: 30.00%
 Grandioso: 40.00%
 
-Si verifichi il funzionamento scrivendo un codice che crei almeno due oggetti di tipo Film, aggiunga a ognuno dei due almeno dieci valutazioni e richiami il metodo recensione().
+Si verifichi il funzionamento scrivendo un codice che crei almeno due oggetti di tipo Film, aggiunga a ognuno dei due almeno dieci valutazioni e 
+richiami il metodo recensione().
 """
 
 class Media:
