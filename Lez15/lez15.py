@@ -69,6 +69,22 @@ class Timer():
         return True
 
 
-with Timer():
 
-    time.sleep(1)
+
+#######################################
+
+
+
+
+def parent():
+    print("Sono in parent.")
+
+    def first_child():
+        print("Sono in first_child.")
+    
+    def second_child():
+        print("Sono in second_child.")
+
+    second_child()
+    second_child()
+    first_child()
