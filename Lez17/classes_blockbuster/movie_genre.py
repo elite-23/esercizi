@@ -16,55 +16,55 @@ Le tre classi Azione, Commedia e Drama devono essere contenute nel file "movie_g
 from film import Film
 
 class Azione(Film):
-    def __init__(self, id, title) -> None:
+    def __init__(self, id :int, title :str) -> None:
         super().__init__(id, title)
         self.genere :str="Azione"
         self.penale :float=3.0
 
-    def getGenere(self):
+    def getGenere(self) -> str:
         #che ritorna il genere di film
         return self.genere
     
-    def getPenale(self): 
+    def getPenale(self) ->float: 
         #che ritorna il valore della penale
         return self.penale
     
-    def calcolaPenaleRitardo(self, ritardo): 
+    def calcolaPenaleRitardo(self,ritardo :int) -> float: 
         #che prende in ingresso il numero dei giorni di ritardo per un film e restituisce la penale da pagare per quel film.
         return self.penale*ritardo
 
 class Commedia(Film):
-    def __init__(self, id, title) -> None:
+    def __init__(self, id :int, title:str) -> None:
         super().__init__(id, title)
         self.genere :str="Commedia"
         self.penale :float=2.50
 
-    def getGenere(self):
+    def getGenere(self) -> str:
         #che ritorna il genere di film
         return self.genere
     
-    def getPenale(self): 
+    def getPenale(self) ->float: 
         #che ritorna il valore della penale
         return self.penale
     
-    def calcolaPenaleRitardo(self,ritardo): 
+    def calcolaPenaleRitardo(self,ritardo :int) -> float: 
         #che prende in ingresso il numero dei giorni di ritardo per un film e restituisce la penale da pagare per quel film.
         return self.penale*ritardo
 
 class Drama(Film):
-    def __init__(self, id, title) -> None:
+    def __init__(self, id :int, title :str) -> None:
         super().__init__(id, title)
         self.genere :str="Drama"
         self.penale :float=2.0
 
-    def getGenere(self):
+    def getGenere(self) -> str:
         #che ritorna il genere di film
         return self.genere
     
-    def getPenale(self): 
+    def getPenale(self) ->float: 
         #che ritorna il valore della penale
         return self.penale
     
-    def calcolaPenaleRitardo(self,ritardo): 
+    def calcolaPenaleRitardo(self,ritardo :int) -> float: 
         #che prende in ingresso il numero dei giorni di ritardo per un film e restituisce la penale da pagare per quel film.
         return self.penale*ritardo

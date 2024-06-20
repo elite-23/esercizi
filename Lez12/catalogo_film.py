@@ -41,12 +41,18 @@ class MovieCatalog():
     def list_directors(self):
         print("The directors in the catalog are:")
         for i in self.directors.keys():
-            
-            print(i)
+            print(f"\t{i}")
 
 
     def get_movies_by_directors(self, director_name :str):
-        pass
+        return self.directors[director_name]
 
-    def search_movies_by_title(self, title):
-        pass
+    def search_movies_by_title(self, title :str):
+        for i,j in self.directors.items():
+            print(f"I film nel nostro catalogo con il titolo {title} sono:")
+            if title in j:
+                print(f"\tDel regista {i} sono:")
+                for y in j:
+                    if y == title:
+                        print(f"\t\t{y}")
+                    
