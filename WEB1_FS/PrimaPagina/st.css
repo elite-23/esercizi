@@ -1,0 +1,38 @@
+body {
+    color : white;
+    background-image: url('images/background.jpg');
+
+}
+
+a:link {
+    color: rgb(150, 208, 241);
+}
+  
+  /* visited link */
+a:visited {
+    color: rgb(247, 224, 98);
+}
+
+a:hover {
+    color: rgb(40, 3, 248);
+}
+
+ol {
+    margin-left: 47%;
+    margin-right: 53%;
+}
+
+.image {
+    width: 34rem;
+    border: 5px rgb(92, 2, 2) solid;
+  }
+.image:hover{
+    content:url("images/KON.gif");
+    content:attr(loop="0")
+}
+
+
+.s:visited .image{
+    
+    content:url("images/dog.gif");
+}
