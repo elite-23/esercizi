@@ -30,9 +30,3 @@ ol {
     content:url("images/KON.gif");
     content:attr(loop="0")
 }
-
-
-.s:visited .image{
-    
-    content:url("images/dog.gif");
-}
