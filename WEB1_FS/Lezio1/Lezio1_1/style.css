@@ -1,0 +1,23 @@
+body {
+    background-color : rgb(0, 99, 156);
+}
+
+a:link {
+    color: rgb(252, 252, 252);
+}
+a:visited {
+    color: rgb(223, 189, 0);
+}
+a:hover {
+    color: rgb(138, 3, 248);
+}
+
+ol {
+    align-items:center;
+
+}
+
+.image {
+    width: 34rem;
+    border: 5px rgb(223, 189, 0) solid;
+  }
