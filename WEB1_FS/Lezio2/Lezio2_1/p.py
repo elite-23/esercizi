@@ -54,9 +54,6 @@ with p.open("w") as f:
                     </div>
                 </div>
             """
-
-
-
         f.write(pag12)
     f.write(pag13)
     f.close()
