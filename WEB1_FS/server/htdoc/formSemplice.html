@@ -4,9 +4,26 @@
 <center>
 <h2>HTML Form</h2>
 
-<form action="/gestisciDatiForm" method="get">
+<form action="/gestisciDatiForm" method="post">
   <label for="fname">First name:</label><br>
   <input type="text" id="fname" name="fname"><br>
+  <p>
+    <label for="fsesso">SESSO:</label>
+    <input type="radio" name="fsesso" value=0>ND
+    <input type="radio" name="fsesso" value=1>M 
+    <input type="radio" name="fsesso" value=2>F
+  </p>
+  <label for="fcomune">Comune di Nascita:</label>
+    <select name="fcomune" id="com">
+      <option value="Roma">Roma</option>
+      <option value="Torino">Torino</option>
+      <option value="Napoli">Napoli</option>
+      <option value="Milano">Milano</option>
+      <option value="Viterbo">PViterboython</option>
+      <option value="Ladispoli">Ladispoli</option>
+      <option value="Santa Marinella">Santa Marinella</option>
+      <option value="Civitavecchia">Civitavecchia</option>
+    </select>
   <input type="submit" value="invia dati">
 </form> 
 </center>

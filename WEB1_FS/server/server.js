@@ -16,16 +16,37 @@ app.get('/paperino', (req, res) => {
 
 app.get('/gestisciDatiForm', (req, res) => {
     console.log(req.query.fname);
-    res.send("<html>Buona serata "+req.query.fname+"</html>");
+    r="<html>Buona serata "+req.query.fname;
+    if (req.query.fsesso =="1")
+        r+="<br>Sei un Uomo"
+    else if (req.query.fsesso =="2")
+        r+="<br>Sei una Donna"
+    else
+        r+="<br>Non hai specificato il tuo sesso"
+    r+="<br>Sei nato nel comune: "+req.query.fcomune+"</html>"
+    res.send(r)
     });
 
-app.get('/pippo', (req, res) => {
-    console.log("Mi hai la pagina che invia file");
+app.post('/gestisciDatiForm', (req, res) => {
+    console.log(req.body.fname);
+    r="<html>Buona serata "+req.query.fname;
+    if (req.body.fsesso =="1")
+        r+="<br>Sei un Uomo"
+    else if (req.body.fsesso =="2")
+        r+="<br>Sei una Donna"
+    else
+        r+="<br>Non hai specificato il tuo sesso"
+    r+="<br>Sei nato nel comune: "+req.body.fcomune+"</html>"
+    res.send(r)
+    });
+
+app.get('/sendfile', (req, res) => {
+    console.log("Mi hai chiesto la pagina per inviare file");
     res.sendFile("sendfile.html", { root: './htdoc' });
     });
 
 app.post("/mansendfile",(req,res) => {
-    p=req.query.password
+    p=req.body.password
     if (p=="paperino")
         res.send("<html>Troppo figo</html>");
     else
