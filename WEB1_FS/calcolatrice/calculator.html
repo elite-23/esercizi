@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatrice</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function InserisciNumero(n)
+        {
+            console.log("hai inserito:"+n)
+            document.getElementById("schermo").value=n
+        }
+    </script>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="schermo" class="calculator-creen" value="0"/>
+        
+        <div class="calculator-keys">
+
+            <button type="button" class="operator" value="+">+</button>
+            <button type="button" class="operator" value="-">-</button>
+            <button type="button" class="operator" value="*">&times;</button>
+            <button type="button" class="operator" value="/">&divide;</button>
+
+            <button class="button" value="7" onclick="InserisciNumero('7')">7</button>
+            <button class="button" value="8" onclick="InserisciNumero('8')">8</button>
+            <button class="button" value="9" onclick="InserisciNumero('9')">9</button>
+
+            <button class="button" value="6" onclick="InserisciNumero('6')">6</button>
+            <button class="button" value="5" onclick="InserisciNumero('5')">5</button>
+            <button class="button" value="4" onclick="InserisciNumero('4')">4</button>
+
+            <button class="button" value="3" onclick="InserisciNumero('3')">3</button>
+            <button class="button" value="2" onclick="InserisciNumero('2')">2</button>
+            <button class="button" value="1" onclick="InserisciNumero('1')">1</button>
+
+            <button class="button" value="0" onclick="InserisciNumero('0')">0</button>
+
+            <button type="button" class="decimal function" value=".">.</button>
+            <button typr="button" class="all-clear function" value="all-clear">AC</button>
+
+
+
+        </div>
+    </div>
+</body>
+</html>
