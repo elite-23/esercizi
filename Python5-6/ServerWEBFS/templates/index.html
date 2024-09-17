@@ -1,34 +1,35 @@
-<html>
-    <head> 
-        <title>
-            Ciao a tutti
-        </title>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="c.css">
+        <title>Form di registrazione</title>
+        
     </head>
     <body>
         <center>
-            <h1>Form di registrazione</h1>
-            <form action="/registrati" method="get">
-                <fieldset>
-                    <legend> Dati utente</legend>
-                    <input type="hidden" name="controllo" value="2"><br>
-                    <p>
-                        <label for="fnmame">Nome utente</label><br>
-                        <input id="fname" type="text" name="nome" value="il tuo nome" size="50" maxlength="20">
-                    </p>
-                    <p>
-                        <label for="fcognome">Password:</label><br>
-                        <input id="fcognome" type="password" name="cognome" value="il tuo cognome" size="50" maxlength="20">
-                    </p>
-                    <p>
-                        Sesso:<input name="sesso" type="radio" value="1">M
-                        <input name="sesso" type="radio" value="2">F
-                    </p>
-                    <p id="btnid">
-                        <input type="reset" value="cancella">
-                        <input type="submit" value="invia dati">
-                    </p>
-                </fieldset>
-            </form>
+            <legend> Dati utente</legend>
+            <div class="main">  	
+                <input type="checkbox" id="chk" aria-hidden="true">
+
+                <div class="login">
+                    <form class="form" action="/registrati" method="get">
+                        <label for="chk" aria-hidden="true">Log in</label>
+                        <input class="input" type="email" name="fnome" placeholder="Nome" required="">
+                        <input class="input" type="password" name="fpassword" placeholder="Password" required="">
+                        <button>Log in</button>
+                    </form>
+                </div>
+
+                <div class="register">
+                    <form class="form" action="/registrati" method="get">
+                        <label for="chk" aria-hidden="true">Register</label>
+                        <input class="input" type="text" name="txt" placeholder="Nome" required="">
+                        <input class="input" type="password" name="fpassword" placeholder="Password" required="">
+                        Sesso:<p><input name="fsesso" type="radio" value="1">M
+                            <input name="fsesso" type="radio" value="2">F</p>
+                        <button>Register</button>
+                    </form>
+                </div>
+            </div>
         </center>
     </body>
 </html>
