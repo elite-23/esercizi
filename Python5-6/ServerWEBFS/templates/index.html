@@ -1,32 +1,30 @@
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="c.css">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/c.css') }}">
         <title>Form di registrazione</title>
-        
     </head>
     <body>
         <center>
             <legend> Dati utente</legend>
             <div class="main">  	
                 <input type="checkbox" id="chk" aria-hidden="true">
-
                 <div class="login">
-                    <form class="form" action="/registrati" method="get">
+                    <form action="/accedi" method="get">
                         <label for="chk" aria-hidden="true">Log in</label>
-                        <input class="input" type="email" name="fnome" placeholder="Nome" required="">
+                        <input class="input" type="text" name="fnome" placeholder="Nome" required="">
                         <input class="input" type="password" name="fpassword" placeholder="Password" required="">
-                        <button>Log in</button>
+                        <input class="but" type="submit" value="Log in">
                     </form>
                 </div>
 
                 <div class="register">
-                    <form class="form" action="/registrati" method="get">
+                    <form action="/registrati" method="get">
                         <label for="chk" aria-hidden="true">Register</label>
-                        <input class="input" type="text" name="txt" placeholder="Nome" required="">
+                        <input class="input" type="text" name="fnome" placeholder="Nome" required="">
                         <input class="input" type="password" name="fpassword" placeholder="Password" required="">
                         Sesso:<p><input name="fsesso" type="radio" value="1">M
                             <input name="fsesso" type="radio" value="2">F</p>
-                        <button>Register</button>
+                        <input class="but" type="submit" value="Register">
                     </form>
                 </div>
             </div>

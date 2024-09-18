@@ -17,7 +17,7 @@ p{
     display: none;
 }
   
-.form {
+form {
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -81,7 +81,7 @@ label {
     margin: 5% 0 5%;
 }   
 /*Button*/
-.form button {
+form .but {
     width: 85%;
     height: 40px;
     margin: 12px auto 10%;
@@ -95,6 +95,6 @@ label {
     transition: .2s ease-in;
 }
 
-.form button:hover {
+form .but:hover {
     background-color: #6d44b8;
 }

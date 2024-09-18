@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 api=Flask(__name__)
 
-utenti: list[list[str]]=[["Mario","Password1","1","0"],["Luigi","Password2","1","0"],["Francesca","Password3","2","0"]]
+utenti: list[list[str]]=[["Mario","Password1","1","1"],["Luigi","Password2","1","0"],["Francesca","Password3","2","0"]]
 
 
 @api.route('/', methods=['GET'])
@@ -36,9 +36,11 @@ def registrati():
 @api.route("/accedi",methods=["GET"])
 def accedi():
     utente: list[str]=[str(request.args.get("fnome")),str(request.args.get("fpassword")),"1"]
+    print(utente)
     for u in utenti:
         i=u
         i.pop(2)
+        print(i)
         if utente == i:
             return regOk(u[0],u[2])
     return regKo()
