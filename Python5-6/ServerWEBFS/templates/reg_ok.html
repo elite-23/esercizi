@@ -1,8 +1,14 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/c.css') }}">
         <title>OK</title>
     </head>
     <body>
-        <a href="/"><h1>Ciao {{Uname}}, sei {{Usex}}!</h1></a>
+        <center>
+            <div class="main">
+                <h1 style="color:#573b8a;">Ciao {{Uname}}, sei {{Usex}}!</h1>
+                <a href="/"><h3>Ritorna alla home</h3></a>
+            </div>
+        </center>
     </body>
 </html>

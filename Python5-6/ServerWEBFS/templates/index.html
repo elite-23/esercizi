@@ -5,26 +5,25 @@
     </head>
     <body>
         <center>
-            <legend> Dati utente</legend>
             <div class="main">  	
                 <input type="checkbox" id="chk" aria-hidden="true">
                 <div class="login">
                     <form action="/accedi" method="get">
-                        <label for="chk" aria-hidden="true">Log in</label>
+                        <label for="chk" aria-hidden="true"><a>Register </a>Log in</label>
                         <input class="input" type="text" name="fnome" placeholder="Nome" required="">
                         <input class="input" type="password" name="fpassword" placeholder="Password" required="">
-                        <input class="but" type="submit" value="Log in">
+                        <input class="btn" type="submit" value="Log in">
                     </form>
                 </div>
 
                 <div class="register">
                     <form action="/registrati" method="get">
-                        <label for="chk" aria-hidden="true">Register</label>
+                        <label for="chk" aria-hidden="true">Register <a>Log in</a></label>
                         <input class="input" type="text" name="fnome" placeholder="Nome" required="">
                         <input class="input" type="password" name="fpassword" placeholder="Password" required="">
-                        Sesso:<p><input name="fsesso" type="radio" value="1">M
-                            <input name="fsesso" type="radio" value="2">F</p>
-                        <input class="but" type="submit" value="Register">
+                        Sesso:<input name="fsesso" type="radio" value="1">M
+                            <input name="fsesso" type="radio" value="2">F
+                        <input class="btn" type="submit" value="Register">
                     </form>
                 </div>
             </div>

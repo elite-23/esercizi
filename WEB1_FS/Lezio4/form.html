@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body style="background-color:hsl(279.12 63.648% 24.487%)">
+        <center>
+        <h1 style="color:white; margin-top:5%;">Inserisci i tuoi dati sotto</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card" style="width:15rem; background-color:hsl(309.12 59.782% 93.634%);">
+                            <div class="card-body">
+                                <center>
+                                    <p class="card-text">
+                                        <form action="#" method="post">
+                                            <p>
+                                                <label for="fname">Nome:</label><br>
+                                                <input type="text" id="fname" name="fname" required><br>
+                                                <label for="fsurname">Cognome:</label><br>
+                                                <input type="text" id="fsurname" name="fsurname" required><br>
+                                            </p>
+                                            <p>
+                                                <label for="fsesso">Sesso:</label>
+                                                <input type="radio" name="fsesso" value=0 required>ND
+                                                <input type="radio" name="fsesso" value=1 required>M 
+                                                <input type="radio" name="fsesso" value=2 required>F
+                                            </p>
+                                            <p>
+                                                <label for="fdate">Data di nascita:</label>
+                                                <input type="date" id="fdate" name="fdate" value="2006-07-28" max="2006-07-28" required />
+                                            </p>
+                                            <p>
+                                                <label for="fcomune">Comune di Nascita:</label>
+                                                <select name="fcomune" id="com" required>
+                                                    <option value="Roma">Roma</option>
+                                                    <option value="Torino">Torino</option>
+                                                    <option value="Napoli">Napoli</option>
+                                                    <option value="Milano">Milano</option>
+                                                    <option value="Viterbo">Viterbo</option>
+                                                    <option value="Ladispoli">Ladispoli</option>
+                                                    <option value="Santa Marinella">Santa Marinella</option>
+                                                    <option value="Civitavecchia">Civitavecchia</option>
+                                                </select>
+                                            </p>
+                                            <p>
+                                                <label for="fcf">Codice Fiscale:</label><br>
+                                                <input type="text" id="fcf" name="fcf" required><br>
+                                            </p>
+                                            <p>
+                                                <label for="femail">Inserisci la tua  mail:</label>
+                                                <input type="email" id="femail" name="femail" required>
+                                            </p>
+                                            <input type="submit" value="invia dati">
+                                        </form> 
+                                    </p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>
