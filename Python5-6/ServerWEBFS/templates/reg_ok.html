@@ -1,13 +1,20 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ url_for('static',filename='styles/c.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/ordini.css') }}">
         <title>OK</title>
     </head>
     <body>
         <center>
             <div class="main">
+                
                 <h1 style="color:#573b8a;">Ciao {{Uname}}, sei {{Usex}}!</h1>
                 <a href="/"><h3>Ritorna alla home</h3></a>
+                <form action="/ordinipas" method="get" style="float:left;">
+                    <input class="ord" type="submit" name="Nome" value="{{Uname}}">
+                </form>
+                <form action="/ordinicor" method="get" style="float:left;">
+                    <input class="ord" type="submit" name="Nome" value="{{Uname}}">
+                </form>
             </div>
         </center>
     </body>

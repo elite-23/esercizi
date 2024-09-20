@@ -20,6 +20,14 @@ label {
     transition: .5s ease-in-out;
 }
 
+nav{
+    background-color: #240046;
+    top: -20;
+    position: relative;
+    width: 100%;
+    margin-bottom: 4rem;
+    left: -8;
+}
 
 /*Classes*/
 .main {
@@ -94,6 +102,9 @@ label {
 
 }
 
+.register form{
+    margin: 3% 11% 0;
+}
 
 /*Switch*/
 #chk {
@@ -144,4 +155,17 @@ form .btn {
 
 form .btn:hover {
     background-color: #6d44b8;
+}
+
+.ord{
+    height: 40px;
+    margin: 12px auto 10%;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s ease-in;
 }

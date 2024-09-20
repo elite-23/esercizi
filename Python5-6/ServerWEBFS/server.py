@@ -9,6 +9,10 @@ utenti: list[list[str]]=[["Mario","Password1","1","1"],["Luigi","Password2","1",
 def index():
     return render_template("index.html")
 
+@api.route('/regko', methods=['GET'])
+def regKo():
+    return render_template("reg_ko.html")
+
 @api.route('/regok', methods=['GET'])
 def regOk(Uname: str,Usex: str):
     if Usex=="1":
@@ -18,10 +22,15 @@ def regOk(Uname: str,Usex: str):
     context={"Usex":Usex,"Uname":Uname}
     return render_template("reg_ok.html", **context)
 
-@api.route('/regko', methods=['GET'])
-def regKo():
-    return render_template("reg_ko.html")
+@api.route("/ordinipas",methods=["GET"])
+def ordinipas():
+    context={"Uname":request.args.get("Nome")}
+    return render_template("ordinipas.html", **context)
 
+@api.route("/ordinicor",methods=["GET"])
+def ordinicor():
+    context={"Uname":request.args.get("Nome")}
+    return render_template("ordinicor.html", **context)
 
 
 @api.route('/registrati', methods=['GET'])
