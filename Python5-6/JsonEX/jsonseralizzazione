@@ -1,0 +1,28 @@
+from pathlib import Path
+import json
+p=Path(__file__).with_name('es.json')
+
+mydict_1 = { "brand": "Ford",
+"electric": False,
+"year": 1964,
+"colors": ["red", "white", "blue"]}
+
+
+def SerializaJson(dData,file_path)-> bool:
+    try:
+        with open(file_path,"w") as j:
+            json.dump(dData,j)
+        return True
+    except:
+        return False
+
+
+def DeserializeJson(file_path)-> dict:
+    with open(file_path,"r") as j:
+        d=json.load(j)
+    return d
+
+
+
+print(SerializaJson(mydict_1,p))
+print(DeserializeJson(p))
