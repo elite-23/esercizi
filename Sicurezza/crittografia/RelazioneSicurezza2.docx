@@ -1,0 +1,19 @@
+RELAZIONE SULL'ESERCIZIO DI CRITTOGRAFIA
+
+Per potersi scambiare messaggi in sicurezza si utilizzano svariati metodi e protocolli di crittografia.
+Nel nostro caso siamo andati ad implementare delle librerie di crittografia in python,
+così da poter ricreare la crittografia asimmetrica utilizzata nei browser,
+Seguendo i seguendi passaggi:
+1) come si generano le chiavi (con codice di esempio)
+Prima abbiamo generato le nostre chiavi personali, publica e privata con il seguente codice:
+    key_pair = RSA.generate(2048)
+    print(key_pair.export_key())
+    public_key = key_pair.publickey()
+
+
+
+2) quali chiavi si scambiano per cifrare 
+
+3) come si cifra un messaggio per un collega
+
+4) come si decifra un messaggio proveniente da un collega
