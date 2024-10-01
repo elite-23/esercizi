@@ -1,19 +1,30 @@
 RELAZIONE SULL'ESERCIZIO DI CRITTOGRAFIA
 
-Per potersi scambiare messaggi in sicurezza si utilizzano svariati metodi e protocolli di crittografia.
-Nel nostro caso siamo andati ad implementare delle librerie di crittografia in python,
-così da poter ricreare la crittografia asimmetrica utilizzata nei browser,
-Seguendo i seguendi passaggi:
-1) come si generano le chiavi (con codice di esempio)
-Prima abbiamo generato le nostre chiavi personali, publica e privata con il seguente codice:
+Per potersi scambiare messaggi in sicurezza si utilizzano svariati metodi e 
+protocolli di crittografia.
+Nel nostro caso siamo andati ad implementare delle librerie di crittografia in 
+python, così da poter ricreare la crittografia asimmetrica utilizzata nei 
+browser, seguendo i seguendi passaggi:
+
+Io e la mia collega abbiamo abbiamo prima generato una coppia di chiavi 
+personali, publica e privata, con il seguente codice:
     key_pair = RSA.generate(2048)
     print(key_pair.export_key())
     public_key = key_pair.publickey()
-
-
-
-2) quali chiavi si scambiano per cifrare 
-
-3) come si cifra un messaggio per un collega
-
-4) come si decifra un messaggio proveniente da un collega
+Una volta acquisite le chiavi personali, ci siamo scambiati le chiavi pubbliche, 
+neccessarie per cifrare i messaggi per l'altra persona.
+Dopo aver preso la chiave publica del destinatario possiamo cifrare il messaggio 
+usando la funzione scritta di seguito, la quale restituisce il messaggio cifrato 
+da inviare al nostro collega.
+    def encrypt_message(message, pub_key):
+        cipher = PKCS1_OAEP.new(pub_key)
+        encrypted_message = cipher.encrypt(message.encode("utf-8"))
+        return base64.b64encode(encrypted_message).decode("utf-8")
+Per finire prendiamo il messaggio cifrato, con la nostra chiave publica, ed 
+utilizzando la chiave privata per decifrarlo in questo modo:
+    def decrypt_message(encrypted_message, priv_key):
+    	cipher = PKCS1_OAEP.new(priv_key)
+    	decrypted_message = cipher.decrypt(base64.b64decode(encrypted_message))
+    	return decrypted_message.decode("utf-8")
+    
+Relazione scritta da Cavalleri Luca, esercizio svolto con l'aiuto di Gaia Flati.
