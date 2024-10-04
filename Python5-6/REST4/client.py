@@ -20,11 +20,16 @@ def AddCittadino():
 
 def ActionCittadino(api_url):
     CF=input("Inserisci il Codice Fiscale del cittadino d'interesse: ")
-    response= requests.post(api_url,CF)
+    
+    if api_url==base_url +"/req_cittadino":
+        response= requests.get(api_url+"/" + CF)   
+    elif api_url==base_url +"/mod_cittadino":
+        response= requests.put(api_url,CF)   
+    elif api_url==base_url +"/del_cittadino":
+        response= requests.delete(api_url,CF)
     if response:
         return response
     
-
 
 CreaInterfaccia()
 ans=input("Seleziona operazione= ")
