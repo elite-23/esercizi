@@ -1,8 +1,32 @@
-from flask import Flask, json, request
+from flask import Flask, json, jsonify, request
 from myjson import JsonSerialize, JsonDeserialize
 
-FileA="anagrafe.json"
 api=Flask(__name__)
+
+FileA="anagrafe.json"
+
+utenti = JsonDeserialize("utenti.json")
+
+
+@api.route('/login', methods=['POST'])
+def GestisciLogin():
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        #{"username":"pippo", "password":"pippo"}
+        jsonReq = request.json
+        sUsernameInseritoDalClient = jsonReq["username"]
+        if sUsernameInseritoDalClient in utenti:
+            sPasswordInseritaDalClient = jsonReq["password"]
+            if sPasswordInseritaDalClient == utenti[sUsernameInseritoDalClient]["password"]:
+                sPriv = utenti[sUsernameInseritoDalClient]["privilegi"]
+                return jsonify({"Esito": "000", "Msg": "Utente registrato", "Privilegio":sPriv}), 200
+            else:
+                return jsonify({"Esito": "001", "Msg": "Credenziali errate"})
+        else:
+            return jsonify({"Esito": "001", "Msg": "Credenziali errate"})
+    else:
+        return jsonify({"Esito": "002", "Msg": "Formato richiesta errato"}) 
+    
 
 @api.route("/add_cittadino", methods=["POST"])
 def AddCittdino():
@@ -20,7 +44,7 @@ def AddCittdino():
             jResponse={"Error":"000", "Msg":"ok"}
             return json.dumps(jResponse),200
         else:
-            jResponse={"Error":"001", "Msg":"COdice fiscale già presente nel database"}
+            jResponse={"Error":"001", "Msg":"Codice fiscale già presente nel database"}
             return json.dumps(jResponse),301
     else:
         return "Errore formato non riconosciuto",401
@@ -86,4 +110,7 @@ def DelCittadino():
         jResponse={"Error":"002", "Msg":"Codice fiscale non presente nel database."}
         return json.dumps(jResponse),302
 
-api.run(host="127.0.0.1",port=8080)
+api.run(host="127.0.0.1",port=8080,ssl_context="adhoc")
+
+#pip3 install cryptography
+#pip3 install cffi
