@@ -1,5 +1,6 @@
 import psycopg2
-
+from flask import Flask, json,jsonify, request, render_template
+import flask_cors as CORS
 #Dettagli connession
 host="localhost"
 port="5432"

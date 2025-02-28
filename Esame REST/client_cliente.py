@@ -236,6 +236,3 @@ while cycle:
     
     else:
         print("ERRORE dato non valido")
-
-
-        

@@ -40,7 +40,7 @@ function TabNavigator() {
   );
 }
 
- function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>

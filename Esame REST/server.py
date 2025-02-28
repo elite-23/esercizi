@@ -3,7 +3,6 @@ import psycopg2
 import dbclient as db
 import sys
 
-
 api = Flask(__name__)
 mydb = db.connect()
 if mydb is None:
