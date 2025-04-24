@@ -1,0 +1,8 @@
+Data: Giovedì 03/04/2025
+Argomenti Lezione 1: introduzione generale, pandas, dataframes
+
+Data: Giovedì 10/04/2025
+Argomenti Lezione 1: approfondimenti, esempi, esercizi e quiz su pandas dataframes
+
+Data: Lunedì 14/04/2025
+Argomenti Lezione 2: data wrangling
